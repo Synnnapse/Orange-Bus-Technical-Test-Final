@@ -1,0 +1,25 @@
+@(searchTerm: String, results: List[play.api.libs.json.JsObject])
+
+@mainForAllPages("Welcome to user details database") {
+<div class="row">
+    <a href="@routes.UserDetails.index">Home</a>
+    <div class="span12">
+        <h2>SEARCH RESULTS</h2>
+        <h3>Searched for: @searchTerm</h3>
+        <h3>Found: @results.length results</h3>
+        @if(results.isEmpty) {
+        <p>No Results found.</p>
+        } else {
+        <ul>
+            @results.map { result =>
+            <li>
+                Found User: @result.toString()
+            </li>
+            }
+        </ul>
+        }
+        <div>
+        </div>
+    </div>
+</div>
+}

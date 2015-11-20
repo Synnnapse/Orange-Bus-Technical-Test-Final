@@ -1,0 +1,27 @@
+@(details: List[play.api.libs.json.JsObject], nameOfParameter: String)
+
+@mainForAllPages("Welcome to the user details site!") {
+<div class="row">
+    <div class="span12">
+        <h2>ALL USERS CURRENTLY IN DATABASE</h2>
+            @if(details.isEmpty) {
+                <p>No user details entered yet.</p>
+            } else {
+            <ul>
+                @details.map { detail =>
+                <li> Entry:
+                    @detail.toString() <br>
+                    <br>
+                </li>
+                }
+            </ul>
+            }
+        <div>
+            <a href="@routes.UserDetails.displayAddUserForm">Click here to add a new user</a>
+            <br>
+            <br>
+            <a href="@routes.UserDetails.displaySearchForUserForm">Click here search for a user</a>
+    </div>
+    </div>
+</div>
+}
